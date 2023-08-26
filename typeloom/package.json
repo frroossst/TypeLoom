@@ -5,21 +5,33 @@
 	"version": "0.0.1",
 	"engines": {
 		"vscode": "^1.81.0"
-  },
+	},
 	"categories": [
 		"Programming Languages"
-  ],
+	],
 	"contributes": {
-		"languages": [{
-			"id": "suneido",
-			"aliases": ["Suneido", "suneido"],
-			"extensions": [".su"],
-			"configuration": "./language-configuration.json"
-		}],
-		"grammars": [{
-			"language": "suneido",
-			"scopeName": "main.su",
-			"path": "./syntaxes/suneido.tmLanguage.json"
-		}]
-  }
+		"languages": [
+			{
+				"id": "suneido",
+				"aliases": [
+					"Suneido",
+					"suneido"
+				],
+				"extensions": [
+					".su"
+				],
+				"configuration": "./language-configuration.json"
+			}
+		],
+		"grammars": [
+			{
+				"language": "suneido",
+				"scopeName": "main.su",
+				"path": "./syntaxes/suneido.tmLanguage.json"
+			}
+		]
+	},
+	"devDependencies": {
+		"@types/node": "^20.5.6"
+	}
 }

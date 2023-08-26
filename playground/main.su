@@ -1,4 +1,5 @@
 // this is a comment
+
 Print("hello world")
 
 /* 
@@ -7,6 +8,8 @@ line
 comments
 */
 
+for i n
+ 
 aaa AAA aaa bbb 
 
 asf 
@@ -14,3 +17,11 @@ asf
 AASKJAKLSJ 
 
 dskfjd
+
+foo = function() {
+    Print("hello world")
+}
+
+for i in 0..=10 {
+    foo(1)
+}

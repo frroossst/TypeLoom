@@ -1,19 +1,39 @@
 {
 	"$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
 	"name": "Suneido",
+	"fileTypes": ["*.su", "*.suneido"],
 	"patterns": [
+		{
+			"include": "#comments"
+		},
 		{
 			"include": "#keywords"
 		},
 		{
 			"include": "#strings"
+		},
+		{
+			"include": "#variables"
 		}
 	],
 	"repository": {
+		"comments": {
+			"patterns": [
+				{
+					"name": "comment.line.suneido",
+					"match": "//.*$"
+				},
+				{
+					"name": "comment.block.suneido",
+					"begin": "/\\*",
+					"end": "\\*/"
+				}
+			]
+		},
 		"keywords": {
 			"patterns": [{
 				"name": "keyword.control.suneido",
-				"match": "\\b(if|while|for|return)\\b"
+				"match": "\\b(and|break|callback|catch|class|case|continue|default|dll|do|else|false|for|foreach|forever|function|if|in|is|isnt|not|or|return|struct|super|switch|this|throw|true|try|while)\\b"
 			}]
 		},
 		"strings": {
@@ -24,6 +44,14 @@
 				{
 					"name": "constant.character.escape.suneido",
 					"match": "\\\\."
+				}
+			]
+		},
+		"variables": {
+			"patterns": [
+				{
+					"name": "variable.other.suneido",
+					"match": "\\b([A-Z][a-zA-Z0-9]*)\\b"
 				}
 			]
 		}
