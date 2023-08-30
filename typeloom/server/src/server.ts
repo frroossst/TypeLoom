@@ -1,19 +1,34 @@
-import { createConnection, ProposedFeatures } from 'vscode-languageserver';
+// server.js
 
-// Create a connection to the client
+// Import the required modules
+import { createConnection, TextDocuments, ProposedFeatures } from 'vscode-languageserver/node';
+import { TextDocument } from 'vscode-languageserver-textdocument';
+
+// Create a connection for the server
 const connection = createConnection(ProposedFeatures.all);
 
-// Define a request handler for type hints
-connection.onRequest('getTypeHints', (params) => {
-  const code = params.textDocument.text;
-  const position = params.position;
+// Create a simple text document manager
+const documents: TextDocuments<TextDocument> = new TextDocuments(TextDocument);
 
-  // Here, you'd perform type inference and return type hints
-  const typeHints = getTypeHintsForPosition(code, position);
+// Listen for open, change and close text document events
+documents.listen(connection);
 
-  return typeHints;
+// Print the source code of any opened document
+documents.onDidOpen((event) => {
+    console.log('Document opened: ' + event.document.uri);
+    console.log('Source code:\n' + event.document.uri.toString());
 });
 
-// Listen for the connection to initialize
-connection.listen();
+// Print any changes made to the document
+documents.onDidChangeContent((event) => {
+    console.log('Document changed: ' + event.document.uri);
+    console.log('Source code:\n' + event.document.uri.toString());
+});
 
+// Print when the document is closed
+documents.onDidClose((event) => {
+    console.log('Document closed: ' + event.document.uri.toString());
+});
+
+// Listen on the connection
+connection.listen();
