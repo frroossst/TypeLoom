@@ -1,3 +1,3 @@
 # TypeLoom
 
-Weaving LSP based Gradual and Optional typing into dynamic languages
+Weaving Pluggable LSP based Gradual and Optional typing into dynamic languages
