@@ -88,7 +88,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded "><a href="white_paper.html" class="active"><strong aria-hidden="true">1.</strong> White Paper</a></li><li class="chapter-item expanded "><a href="paper.html"><strong aria-hidden="true">2.</strong> Paper</a></li><li class="chapter-item expanded "><a href="demo_gifs.html"><strong aria-hidden="true">3.</strong> Demo GIFs</a></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded "><a href="acknowledgements.html"><strong aria-hidden="true">1.</strong> Acknowledgements</a></li><li class="chapter-item expanded "><a href="white_paper.html" class="active"><strong aria-hidden="true">2.</strong> White Paper</a></li><li class="chapter-item expanded "><a href="paper.html"><strong aria-hidden="true">3.</strong> Paper</a></li><li class="chapter-item expanded "><a href="demo_gifs.html"><strong aria-hidden="true">4.</strong> Demo GIFs</a></li><li class="chapter-item expanded "><a href="references.html"><strong aria-hidden="true">5.</strong> References</a></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle">
                 <div class="sidebar-resize-indicator"></div>
@@ -197,15 +197,9 @@ defer type checking until runtime, allowing for more flexibility in the program'
 These two paradigms are not mutually exclusive, and many programming languages incorporate elements of
 both static and dynamic typing. In a dynamically typed language, the type information is associated with
 values rather than variables, and in a statically typed language, the type information is associated with
-variables rather than values.</p>
-<p>Fortran and Algol in the 1950s and 1960s marked the beginning of explicit type systems, where variables
-were associated with specific data types, thus reducing errors and improving program clarity.
-Statically-typed languages like C and Pascal emerged in the 1970s and 1980s, ensuring type safety through
-compile-time checks. This era also saw the rise of object-oriented programming with languages like, C++
-and Java, which integrated more sophisticated type systems to support complex data structures and inheritance.
-Later, Python and JavaScript became synonymous with dynamic typing. The dichotomy between static and dynamic
-typing continues to shape modern programming, offering developers a spectrum of tools to balance safety,
-performance, and ease of use based on their specific needs.</p>
+variables rather than values. The dichotomy between static and dynamic typing continues to shape modern
+programming discouse, offering developers a spectrum of tools to balance safety, performance, and ease
+of use based on their specific needs.</p>
 <h2 id="towards-statically-typed-languages"><a class="header" href="#towards-statically-typed-languages">Towards statically typed languages</a></h2>
 <p>In recent years, there has beed a trend across the ecosystem towards increasingly statically typed languages.
 JavaScript, a dynamically typed language is the de facto standard for web development and has seen wide spread
@@ -276,8 +270,8 @@ as a consequence undecidable. And many type systems are unsound, meaning that a 
 produce type errors at runtime.</p>
 <h2 id="how-is-typeloom-implemented"><a class="header" href="#how-is-typeloom-implemented">How is TypeLoom implemented?</a></h2>
 <p>Taking inspiration from modern Integrated Development Environments (IDEs) and the @ts-docs approach, we propose a new
-tool called TypeLoom. This tool utitlises the Language Server Protocol (LSP) which is a protocol used between an editor
-and a language server to provide diagnostics, completions, and other language features.</p>
+tool called TypeLoom. This tool utitlises the Language Server Protocol (LSP) which is a protocol used by the IDE to talk
+to a language server to provide features like: diagnostics, completions, and other language features.</p>
 <p><img src="./editor_features.gif" alt="" />
 <em>Fig 4: Showing the features of an editor that uses the Language Server Protocol.</em></p>
 <p>TypeLoom leverages the inlay hints feature introduced in the LSP version 3.17.0. Inlay hints are a way to display additional
@@ -313,7 +307,9 @@ node are the variables x and y, while the arguments to the Eq node are the varia
 science is a data structure that is made of nodes and edges. A map of the london metro system is a graph. The nodes are the stations
 and the edges are the dfferent lines that connect the stations.</p>
 <p>A Virtual Machine which is an extension of the loom-compiler then executes the bytecode step by step to generate the graph data strucutre.
-A module called Ceph manages the graph data structure and is responsible for checking and inferring types.</p>
+A module called Ceph manages the graph data structure and is responsible for checking and inferring types. Following is the full architecture
+diagram of TypeLoom.
+<img src="./TypeLoomArchitecture.png" alt="TypeLoom Architecture" /></p>
 <p>Ceph then performs type checking and basic inference on the graph data structure. Inference is the process of deducing the type of an
 expression. If we are given the expression <code>message = "Hey mom!"</code>, we can infer that the type of the variable message is a string, or
 when two numbers are being added we can be sure that the result is a number. Coming back to our graph, the nodes are connected to each
@@ -321,11 +317,15 @@ other by edges. A connection between two nodes indicates that the two nodes are 
 connected we say that that they have compatible types. <code>A &lt;---&gt; B</code> if nodes A and B are connected by an edge we put a type constraint
 on them saying their types must be compatible or equal to each other. And this applies even if two nodes are not directly connected.
 If <code>A &lt;---&gt; B</code> and <code>B &lt;---&gt; C</code> then <code>A &lt;---&gt; C</code>. A, B, and C are all nodes with compatible types in our graph. This fundamental property
-of our graph is leevied by the inference engine to deduce the types of the nodes. Going, back to our previous Add example. We can infer
-the type of a to be a Number, if we know that x and y are Numbers. How would we know the type of x and y? Here, we say that since x and y
-are arguments to the function Add, the programmer must tell us explicity the signature of each function. That is, the programmer must define
-the type of each argument to functions and what they return. Many other type systems put a similar restriction for function signatures
-for type inference to work. If, the programmer had provided the signature of Add as <code>type Add &gt;&gt;= Fn(Number, Number) -&gt; Number</code>, then we
+of our graph is leevied by the inference engine to deduce the types of the nodes.</p>
+<p>For the function Add, this is what our graph would look like,
+<img src="./Add_graph.png" alt="add_graph" />
+The above graph is missing the nodes that make up the Return(), Eq() and the actual Add or + operation.</p>
+<p>Going, back to our previous Add example. We can infer the type of a to be a Number, if we know that x and y are Numbers.
+How would we know the type of x and y? Here, we say that since x and y are arguments to the function Add, the programmer must tell us
+explicity the signature of each function. That is, the programmer must define the type of each argument to functions and what they return.
+Many other type systems put a similar restriction for function signatures for type inference to work. If, the programmer had provided
+the signature of Add as <code>type Add &gt;&gt;= Fn(Number, Number) -&gt; Number</code>, then we
 can infer the type of x and y to be Number. Ceph also checks for type errors. For each node, Ceph checks if the current node it is checking
 for has a type that is compatible with the type of the node it is connected to. If the types are not compatible, Ceph raises a type error.
 It also checks the signatures of the function provided by the programmer. Ceph when it comes across the node for Eq, would check that
@@ -375,7 +375,7 @@ or a String. This is called a union type. A Union type is denoted by the <code>|
 </ol>
 <p>Here we have a type Currency which is a union of GBP, USD and CAD. A variable of type Currency can be assigned any of the three types,
 and nothing else as demonstrated.
-~<a href="./union_literals.gif"></a></p>
+<img src="./union_literals.gif" alt="" /></p>
 <ol start="3">
 <li>Structural Types
 A structural type can be thought of as a key-value pair. A variable of a structural type must have the same keys as the type. This is
@@ -399,11 +399,17 @@ turing complete and undecidable.</p>
 <p>The type system is also quite basic and lacks many features that are present in modern type systems. For example, TypeLoom
 does not support generics, higher kinded types, type classes, or dependent types. Not to say that advanced features are
 a must but the aim of TypeLoom is to be a practical tool for developers to catch type errors in their codebase.</p>
+<p>The process of using code actions to take in developer input on type annotations hasn't been implemented yet. The bytecode
+generation for the graph is not smart and there are some optimizations to be done there. And much thorough testing is required
+but, TypeLoom as it currently stands is an excellent proof of concept, and holds great potential.</p>
 
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="acknowledgements.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
 
                             <a rel="next prefetch" href="paper.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                                 <i class="fa fa-angle-right"></i>
@@ -415,6 +421,9 @@ a must but the aim of TypeLoom is to be a practical tool for developers to catch
             </div>
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="acknowledgements.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
 
                     <a rel="next prefetch" href="paper.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                         <i class="fa fa-angle-right"></i>

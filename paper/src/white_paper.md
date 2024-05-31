@@ -25,16 +25,10 @@ defer type checking until runtime, allowing for more flexibility in the program'
 These two paradigms are not mutually exclusive, and many programming languages incorporate elements of
 both static and dynamic typing. In a dynamically typed language, the type information is associated with
 values rather than variables, and in a statically typed language, the type information is associated with
-variables rather than values. 
+variables rather than values. The dichotomy between static and dynamic typing continues to shape modern 
+programming discouse, offering developers a spectrum of tools to balance safety, performance, and ease 
+of use based on their specific needs.
 
-Fortran and Algol in the 1950s and 1960s marked the beginning of explicit type systems, where variables 
-were associated with specific data types, thus reducing errors and improving program clarity. 
-Statically-typed languages like C and Pascal emerged in the 1970s and 1980s, ensuring type safety through 
-compile-time checks. This era also saw the rise of object-oriented programming with languages like, C++ 
-and Java, which integrated more sophisticated type systems to support complex data structures and inheritance. 
-Later, Python and JavaScript became synonymous with dynamic typing. The dichotomy between static and dynamic 
-typing continues to shape modern programming, offering developers a spectrum of tools to balance safety, 
-performance, and ease of use based on their specific needs.
 
 ## Towards statically typed languages
 
@@ -115,8 +109,8 @@ produce type errors at runtime.
 ## How is TypeLoom implemented?
 
 Taking inspiration from modern Integrated Development Environments (IDEs) and the @ts-docs approach, we propose a new
-tool called TypeLoom. This tool utitlises the Language Server Protocol (LSP) which is a protocol used between an editor
-and a language server to provide diagnostics, completions, and other language features. 
+tool called TypeLoom. This tool utitlises the Language Server Protocol (LSP) which is a protocol used by the IDE to talk
+to a language server to provide features like: diagnostics, completions, and other language features. 
 
 ![](./editor_features.gif)
 *Fig 4: Showing the features of an editor that uses the Language Server Protocol.*
@@ -164,7 +158,9 @@ science is a data structure that is made of nodes and edges. A map of the london
 and the edges are the dfferent lines that connect the stations. 
 
 A Virtual Machine which is an extension of the loom-compiler then executes the bytecode step by step to generate the graph data strucutre. 
-A module called Ceph manages the graph data structure and is responsible for checking and inferring types. 
+A module called Ceph manages the graph data structure and is responsible for checking and inferring types. Following is the full architecture
+diagram of TypeLoom.
+![TypeLoom Architecture](./TypeLoomArchitecture.png)
 
 Ceph then performs type checking and basic inference on the graph data structure. Inference is the process of deducing the type of an
 expression. If we are given the expression `message = "Hey mom!"`, we can infer that the type of the variable message is a string, or
@@ -173,11 +169,17 @@ other by edges. A connection between two nodes indicates that the two nodes are 
 connected we say that that they have compatible types. `A <---> B` if nodes A and B are connected by an edge we put a type constraint
 on them saying their types must be compatible or equal to each other. And this applies even if two nodes are not directly connected.
 If `A <---> B` and `B <---> C` then `A <---> C`. A, B, and C are all nodes with compatible types in our graph. This fundamental property
-of our graph is leevied by the inference engine to deduce the types of the nodes. Going, back to our previous Add example. We can infer
-the type of a to be a Number, if we know that x and y are Numbers. How would we know the type of x and y? Here, we say that since x and y 
-are arguments to the function Add, the programmer must tell us explicity the signature of each function. That is, the programmer must define
-the type of each argument to functions and what they return. Many other type systems put a similar restriction for function signatures
-for type inference to work. If, the programmer had provided the signature of Add as `type Add >>= Fn(Number, Number) -> Number`, then we 
+of our graph is leevied by the inference engine to deduce the types of the nodes. 
+
+For the function Add, this is what our graph would look like, 
+![add_graph](./Add_graph.png)
+The above graph is missing the nodes that make up the Return(), Eq() and the actual Add or + operation.
+
+Going, back to our previous Add example. We can infer the type of a to be a Number, if we know that x and y are Numbers. 
+How would we know the type of x and y? Here, we say that since x and y are arguments to the function Add, the programmer must tell us 
+explicity the signature of each function. That is, the programmer must define the type of each argument to functions and what they return. 
+Many other type systems put a similar restriction for function signatures for type inference to work. If, the programmer had provided 
+the signature of Add as `type Add >>= Fn(Number, Number) -> Number`, then we 
 can infer the type of x and y to be Number. Ceph also checks for type errors. For each node, Ceph checks if the current node it is checking
 for has a type that is compatible with the type of the node it is connected to. If the types are not compatible, Ceph raises a type error.
 It also checks the signatures of the function provided by the programmer. Ceph when it comes across the node for Eq, would check that
@@ -242,7 +244,7 @@ or a String. This is called a union type. A Union type is denoted by the `|` ope
 
 Here we have a type Currency which is a union of GBP, USD and CAD. A variable of type Currency can be assigned any of the three types,
 and nothing else as demonstrated.
-~[](./union_literals.gif)
+![](./union_literals.gif)
 
 3. Structural Types
 A structural type can be thought of as a key-value pair. A variable of a structural type must have the same keys as the type. This is
@@ -275,3 +277,8 @@ turing complete and undecidable.
 The type system is also quite basic and lacks many features that are present in modern type systems. For example, TypeLoom
 does not support generics, higher kinded types, type classes, or dependent types. Not to say that advanced features are
 a must but the aim of TypeLoom is to be a practical tool for developers to catch type errors in their codebase. 
+
+The process of using code actions to take in developer input on type annotations hasn't been implemented yet. The bytecode
+generation for the graph is not smart and there are some optimizations to be done there. And much thorough testing is required
+but, TypeLoom as it currently stands is an excellent proof of concept, and holds great potential. 
+
