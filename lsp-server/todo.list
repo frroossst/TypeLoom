@@ -1,0 +1,16 @@
+- [x] Unit Tests
+- [x] Replace existing interface with TypeRepr
+
+- [ ] Custom TypeRepr 
+    - [x] Parameter type
+    - [x] Type aliases
+        - [ ] Throwing error still shows primitive type rather than the type it is aliased to
+    - [ ] Structural types
+    - [ ] Function Return type
+    - [ ] Funciton parameter types on call
+    - [x] Unions
+    - [ ] Intersections
+
+- [ ] DSL Parser for user defined types
+- [ ] Runtime type guards for inference
+- [ ] Insert asserts and logger to verify the correctness of the inference 

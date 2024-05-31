@@ -1,0 +1,16 @@
+example = class
+    {
+    SimpleInferenceErrors(x)
+        {
+        num = x + 123
+        if Number?(x) and x > 100
+            {
+            // CODE
+            }
+        else
+            {
+            num() // ERROR
+            }
+        }
+    }
+

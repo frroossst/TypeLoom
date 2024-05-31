@@ -1,0 +1,9 @@
+// type IncorrectParam >>= Fn(Number) -> Void
+example = class
+    {
+    IncorrectParam(x) // this annotation only exists in the LSP as
+        {			  // an in-line hint not actually in the code
+        x = "IAmAString"
+        }
+    }
+

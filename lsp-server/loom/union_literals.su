@@ -1,0 +1,11 @@
+// type Currency >>= "USD" | "CAD" | "GBP"
+example = class
+    {
+	currencyTypeAlias()
+			{
+			u = "USD"
+			nu = "usd"
+			ou = "other"
+			}
+    }
+

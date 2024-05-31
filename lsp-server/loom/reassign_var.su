@@ -1,0 +1,9 @@
+example = class()
+    {
+    Reassign()
+        {
+        x = "hello"
+        x = 123
+        }
+    }
+

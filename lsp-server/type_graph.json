@@ -1,0 +1,474 @@
+{
+    "nodes": [
+        {
+            "value": "String",
+            "edges": [
+                "b2832a9a429c4753ace702ea4ec974f3",
+                "7912563bf5494f85a879f73a374d4f4c",
+                "978c988eff5a4335a53e6649f7c930f0",
+                "bac06021f9404b23b453a8d353d586aa",
+                "e1b3988823a04faaa60aabbb2361da9b",
+                "67c496ddccb74a6eaa8a156f76a03ff4",
+                "ca5ff0ed3af144148d5059c6e7c183af",
+                "68145507886e4168b2fb78de0bcf8ad7",
+                "c9c856aada3a4ce498567ab066767d4c",
+                "2d2aa92a01b2419690534ef313c75ac6"
+            ]
+        },
+        {
+            "value": "Number",
+            "edges": [
+                "aa09e8fd60a645b9850bef13701c4f20",
+                "e8669b041ba240f9a3e0ca9e94b77c0c",
+                "0b872c14b4304eaca3dca5ecb4ea1b52",
+                "9a7b837ce9724a908a743d9090a400ef",
+                "c6019ca0632e406c8407942a31213405",
+                "abba7786b4db4710951366cf36156201",
+                "809e56d3f6644b58bcfd8213a8e7c9e9",
+                "d99b6969e2b349278c84cc5a11b84c79",
+                "ad2a7f12e7e8431fb5deb09e760c6432",
+                "d4dbe336f3f14d67a830b4a448d0a120",
+                "e1d3b93dbeb542f4ad12e9474840935a",
+                "55834fd3fae34d1eb43e8b28b26d09cd",
+                "9e206f90e9884a3a9943d16576a959d0",
+                "825a39b8923b4dadb50c5d4deb057d7b",
+                "c6c617bf3bc44f70899d7a50ea2afbd8",
+                "b88fce2a0152407f9d7b2f78b5974cac",
+                "4a70f3c390634f52924609d44830d05e",
+                "0fc5421175444476a888e11b677b445f",
+                "704ad87e679a4192ac2fe1e0f826c173",
+                "3c90d6bce2b44498ae4e9e16d63dc04d",
+                "dfd1958e58b64aa1b8c8ba44899954dd",
+                "15d7490ca04345baaec8c43fddd71497",
+                "9b1ae56abba442d199be3487860fde19"
+            ]
+        },
+        {
+            "value": "Boolean",
+            "edges": [
+                "d91be1407ce941eabc63919b9586d700",
+                "6fb6f2cef7a9439eba4278d7e1058ac0"
+            ]
+        },
+        {
+            "value": "Any",
+            "edges": [
+                "30612f39632249c4948017726f8a2344",
+                "29875bd0f1ec4163b957d8117ed62f1f",
+                "056c83eaead74681b77db482be57252f",
+                "bfb2f7e555c6476cbbb0961a5f8d4daf",
+                "860a11a1e663438da7ce26f9809a316b"
+            ]
+        },
+        {
+            "value": "NotApplicable",
+            "edges": []
+        },
+        {
+            "value": "Never",
+            "edges": []
+        },
+        {
+            "value": "Function",
+            "edges": []
+        },
+        {
+            "value": "Object",
+            "edges": [
+                "1e1d392b36764f3cac0c34a1252e80bc",
+                "bf285723e7b94862a865e61db8c93452"
+            ]
+        },
+        {
+            "value": "InBuiltOperator",
+            "edges": []
+        },
+        {
+            "value": "User",
+            "edges": [
+                "f5a94c0a491a47fdb8f54773c513e125"
+            ]
+        },
+        {
+            "value": "f5a94c0a491a47fdb8f54773c513e125",
+            "edges": [
+                "User"
+            ]
+        },
+        {
+            "value": "Currency",
+            "edges": [
+                "42298ea3805648808bb0d8b0e1e87531"
+            ]
+        },
+        {
+            "value": "42298ea3805648808bb0d8b0e1e87531",
+            "edges": [
+                "Currency",
+                "cb07709a2924493296ba11a1e32ec515"
+            ]
+        },
+        {
+            "value": "aa09e8fd60a645b9850bef13701c4f20",
+            "edges": [
+                "Number",
+                "b88fce2a0152407f9d7b2f78b5974cac",
+                "e8669b041ba240f9a3e0ca9e94b77c0c",
+                "3c90d6bce2b44498ae4e9e16d63dc04d"
+            ]
+        },
+        {
+            "value": "e8669b041ba240f9a3e0ca9e94b77c0c",
+            "edges": [
+                "Number",
+                "aa09e8fd60a645b9850bef13701c4f20",
+                "0b872c14b4304eaca3dca5ecb4ea1b52"
+            ]
+        },
+        {
+            "value": "0b872c14b4304eaca3dca5ecb4ea1b52",
+            "edges": [
+                "Number",
+                "e8669b041ba240f9a3e0ca9e94b77c0c",
+                "0fc5421175444476a888e11b677b445f"
+            ]
+        },
+        {
+            "value": "70c18b75cf9c4e878404ca2fd1851ede",
+            "edges": [
+                "9a7b837ce9724a908a743d9090a400ef"
+            ]
+        },
+        {
+            "value": "9a7b837ce9724a908a743d9090a400ef",
+            "edges": [
+                "70c18b75cf9c4e878404ca2fd1851ede",
+                "Number"
+            ]
+        },
+        {
+            "value": "c6019ca0632e406c8407942a31213405",
+            "edges": [
+                "Number"
+            ]
+        },
+        {
+            "value": "b2832a9a429c4753ace702ea4ec974f3",
+            "edges": [
+                "String"
+            ]
+        },
+        {
+            "value": "abba7786b4db4710951366cf36156201",
+            "edges": [
+                "Number"
+            ]
+        },
+        {
+            "value": "809e56d3f6644b58bcfd8213a8e7c9e9",
+            "edges": [
+                "Number"
+            ]
+        },
+        {
+            "value": "30612f39632249c4948017726f8a2344",
+            "edges": [
+                "Any"
+            ]
+        },
+        {
+            "value": "d99b6969e2b349278c84cc5a11b84c79",
+            "edges": [
+                "Number"
+            ]
+        },
+        {
+            "value": "1e1d392b36764f3cac0c34a1252e80bc",
+            "edges": [
+                "Object"
+            ]
+        },
+        {
+            "value": "d91be1407ce941eabc63919b9586d700",
+            "edges": [
+                "Boolean"
+            ]
+        },
+        {
+            "value": "7912563bf5494f85a879f73a374d4f4c",
+            "edges": [
+                "String"
+            ]
+        },
+        {
+            "value": "ad2a7f12e7e8431fb5deb09e760c6432",
+            "edges": [
+                "Number"
+            ]
+        },
+        {
+            "value": "49bbab37af4b4873b7d59ffd451392ab",
+            "edges": [
+                "d88108eb72274acc88a287a1e4093ee9"
+            ]
+        },
+        {
+            "value": "d88108eb72274acc88a287a1e4093ee9",
+            "edges": [
+                "49bbab37af4b4873b7d59ffd451392ab"
+            ]
+        },
+        {
+            "value": "bf285723e7b94862a865e61db8c93452",
+            "edges": [
+                "Object"
+            ]
+        },
+        {
+            "value": "29875bd0f1ec4163b957d8117ed62f1f",
+            "edges": [
+                "Any"
+            ]
+        },
+        {
+            "value": "a17733d891d7403c95fcd74a0264e0d1",
+            "edges": [
+                "d4dbe336f3f14d67a830b4a448d0a120"
+            ]
+        },
+        {
+            "value": "d4dbe336f3f14d67a830b4a448d0a120",
+            "edges": [
+                "a17733d891d7403c95fcd74a0264e0d1",
+                "Number"
+            ]
+        },
+        {
+            "value": "e1d3b93dbeb542f4ad12e9474840935a",
+            "edges": [
+                "Number"
+            ]
+        },
+        {
+            "value": "978c988eff5a4335a53e6649f7c930f0",
+            "edges": [
+                "String",
+                "20339e56b3ff49889d618da4d4899887"
+            ]
+        },
+        {
+            "value": "bac06021f9404b23b453a8d353d586aa",
+            "edges": [
+                "String",
+                "e1b3988823a04faaa60aabbb2361da9b"
+            ]
+        },
+        {
+            "value": "e1b3988823a04faaa60aabbb2361da9b",
+            "edges": [
+                "bac06021f9404b23b453a8d353d586aa",
+                "String"
+            ]
+        },
+        {
+            "value": "20339e56b3ff49889d618da4d4899887",
+            "edges": [
+                "978c988eff5a4335a53e6649f7c930f0"
+            ]
+        },
+        {
+            "value": "67c496ddccb74a6eaa8a156f76a03ff4",
+            "edges": [
+                "String"
+            ]
+        },
+        {
+            "value": "833501f04c254bc3a6ca7c1304400645",
+            "edges": [
+                "55834fd3fae34d1eb43e8b28b26d09cd"
+            ]
+        },
+        {
+            "value": "55834fd3fae34d1eb43e8b28b26d09cd",
+            "edges": [
+                "833501f04c254bc3a6ca7c1304400645",
+                "Number"
+            ]
+        },
+        {
+            "value": "bc94605f071245a1a9e1411628dd01ff",
+            "edges": [
+                "9e206f90e9884a3a9943d16576a959d0"
+            ]
+        },
+        {
+            "value": "9e206f90e9884a3a9943d16576a959d0",
+            "edges": [
+                "bc94605f071245a1a9e1411628dd01ff",
+                "Number"
+            ]
+        },
+        {
+            "value": "825a39b8923b4dadb50c5d4deb057d7b",
+            "edges": [
+                "Number"
+            ]
+        },
+        {
+            "value": "ca5ff0ed3af144148d5059c6e7c183af",
+            "edges": [
+                "String",
+                "bae683566f654cb18036f355ac4a2e40"
+            ]
+        },
+        {
+            "value": "bae683566f654cb18036f355ac4a2e40",
+            "edges": [
+                "ca5ff0ed3af144148d5059c6e7c183af"
+            ]
+        },
+        {
+            "value": "056c83eaead74681b77db482be57252f",
+            "edges": [
+                "Any"
+            ]
+        },
+        {
+            "value": "c6c617bf3bc44f70899d7a50ea2afbd8",
+            "edges": [
+                "Number",
+                "d32c66727bc14c2b8ddb6fd0df6d143f"
+            ]
+        },
+        {
+            "value": "d32c66727bc14c2b8ddb6fd0df6d143f",
+            "edges": [
+                "c6c617bf3bc44f70899d7a50ea2afbd8"
+            ]
+        },
+        {
+            "value": "bfb2f7e555c6476cbbb0961a5f8d4daf",
+            "edges": [
+                "Any"
+            ]
+        },
+        {
+            "value": "cb07709a2924493296ba11a1e32ec515",
+            "edges": [
+                "42298ea3805648808bb0d8b0e1e87531"
+            ]
+        },
+        {
+            "value": "68145507886e4168b2fb78de0bcf8ad7",
+            "edges": [
+                "String"
+            ]
+        },
+        {
+            "value": "b88fce2a0152407f9d7b2f78b5974cac",
+            "edges": [
+                "aa09e8fd60a645b9850bef13701c4f20",
+                "Number"
+            ]
+        },
+        {
+            "value": "0fc5421175444476a888e11b677b445f",
+            "edges": [
+                "7a9cceea3aa14b54b8332927a905640b",
+                "Number",
+                "0b872c14b4304eaca3dca5ecb4ea1b52"
+            ]
+        },
+        {
+            "value": "7a9cceea3aa14b54b8332927a905640b",
+            "edges": [
+                "0fc5421175444476a888e11b677b445f"
+            ]
+        },
+        {
+            "value": "4a70f3c390634f52924609d44830d05e",
+            "edges": [
+                "Number"
+            ]
+        },
+        {
+            "value": "704ad87e679a4192ac2fe1e0f826c173",
+            "edges": [
+                "Number"
+            ]
+        },
+        {
+            "value": "6fb6f2cef7a9439eba4278d7e1058ac0",
+            "edges": [
+                "Boolean"
+            ]
+        },
+        {
+            "value": "2a8e4f6761d7421380c30bcd52f26ce6",
+            "edges": [
+                "a507386335aa46bd8179b9557e0b49c7"
+            ]
+        },
+        {
+            "value": "a507386335aa46bd8179b9557e0b49c7",
+            "edges": [
+                "2a8e4f6761d7421380c30bcd52f26ce6"
+            ]
+        },
+        {
+            "value": "3c90d6bce2b44498ae4e9e16d63dc04d",
+            "edges": [
+                "aa09e8fd60a645b9850bef13701c4f20",
+                "Number"
+            ]
+        },
+        {
+            "value": "61ea9953b25944e5b473f292cd983bca",
+            "edges": [
+                "a86077e2c6e44857ac6a7946f718699c"
+            ]
+        },
+        {
+            "value": "a86077e2c6e44857ac6a7946f718699c",
+            "edges": [
+                "61ea9953b25944e5b473f292cd983bca"
+            ]
+        },
+        {
+            "value": "dfd1958e58b64aa1b8c8ba44899954dd",
+            "edges": [
+                "Number"
+            ]
+        },
+        {
+            "value": "860a11a1e663438da7ce26f9809a316b",
+            "edges": [
+                "Any"
+            ]
+        },
+        {
+            "value": "c9c856aada3a4ce498567ab066767d4c",
+            "edges": [
+                "String"
+            ]
+        },
+        {
+            "value": "2d2aa92a01b2419690534ef313c75ac6",
+            "edges": [
+                "String"
+            ]
+        },
+        {
+            "value": "15d7490ca04345baaec8c43fddd71497",
+            "edges": [
+                "Number"
+            ]
+        },
+        {
+            "value": "9b1ae56abba442d199be3487860fde19",
+            "edges": [
+                "Number"
+            ]
+        }
+    ]
+}

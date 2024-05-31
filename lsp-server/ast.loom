@@ -1,0 +1,5 @@
+class {
+Add: Function(x,y
+	Binary(Eq a Nary(Add x y))
+	Return(a))
+}

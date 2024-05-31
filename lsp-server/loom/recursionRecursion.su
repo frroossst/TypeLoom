@@ -1,0 +1,28 @@
+example = class {
+	stub_method() {}
+	New()
+		{
+		collection = Object(1, "foo", #(), Date.Begin(), false, .stub_method, [])
+		select = Random(6)
+		item = collection.GetDefault(select, "default")
+
+		.InferForever(item)
+		}
+
+	InferForever(x)
+		{
+		if Number?(x)
+			{
+			num = x + 2
+			Print("x is a Number")
+			}
+		if Date?(x) and String?(x)
+			{
+			num = x + 123
+			Print("x is a Date and a String???!!!")
+			}
+		Print(Type(x))
+		}
+	}
+
+example()

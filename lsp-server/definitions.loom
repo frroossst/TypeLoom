@@ -1,0 +1,12 @@
+type originalTestFunc >>= fn(x: Number, y: Number, z: Number) -> Any
+
+type MyNumber >>= Number
+
+type Currency >>= "CAD" | "USD" | "GBP"
+
+type StrNum >>= String | Number
+
+type User >>= {name: String, age: Number}
+
+type Admin >>= User & {admin: Boolean}
+

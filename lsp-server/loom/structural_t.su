@@ -1,0 +1,26 @@
+// type User >>= Object(name: String, age: Number)
+// type Admin >>= User & Object(role: String)
+// type GetUserAuth >>= Fn(Admin) -> Bool
+example = class
+    {
+    GetUserAuth(usr)
+        {
+        return true
+        }
+	NewUser()
+		{
+		return Object(name: "Jane", age: 28, role: "admin")
+		}
+	NewUser2()
+		{
+		return Object(name: "John", age: 28)
+		}
+    }
+
+eg = example()
+
+user = eg.NewUser()
+user2 = eg.NewUser2()
+
+eg.GetUserAuth(user)
+eg.GetUserAuth(user2)

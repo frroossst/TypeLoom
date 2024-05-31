@@ -1,0 +1,12 @@
+example = class {
+
+    GetAttribute() {
+        return this.attrb
+    }
+
+    SetAttribute(value) {
+    	this.attrb = value
+    }
+}
+
+example()

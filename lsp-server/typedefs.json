@@ -1,0 +1,20 @@
+{
+    "originalTestFunc": {
+        "name": "originalTestFunc",
+        "type": "function",
+        "arguments": [
+            {
+                "name": "x",
+                "type": "Number"
+            },
+            {
+                "name": "y",
+                "type": "Number"
+            },
+            {
+                "name": "z",
+                "type": "Number"
+            }
+        ]
+    }
+}

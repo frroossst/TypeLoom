@@ -1,0 +1,26 @@
+example = class {
+	counter: 0
+
+	GetCount() {
+		return this.counter
+	}
+
+	SetCount(c) {
+		this.counter = c
+	}
+
+	New() {
+		strg = "Hello World!"
+		date = Date.Begin()
+		objt = Object(key: "value")
+		obj2 = #(0, 1, 2, 3)
+		func = .SetCount
+		numb = 42
+		numb = 3.14
+		bool = String?("") and Number?(-52)
+		subn = 99 - 1
+		addn = numb + 14
+	}
+}
+
+example()

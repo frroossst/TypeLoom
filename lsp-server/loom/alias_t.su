@@ -1,0 +1,11 @@
+// type Number2 >>= Number
+example = class
+    {
+    SimplePrimitiveTypeAlias(a)
+        {
+		a = 1234    // This is fine because the type Number2
+					//is assignable to type Number
+        a = "thisShouldNotAssign"
+        }
+    }
+

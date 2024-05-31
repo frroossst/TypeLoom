@@ -1,0 +1,5 @@
+[loom]2024/05/31 02:45:25 main.go:18: Hey, I started!
+[loom]2024/05/31 02:45:25 main.go:48: connected to Neovim 0.10.0-dev+g27fb62988
+[loom]2024/05/31 02:45:25 main.go:52: Sent initialize response
+[loom]2024/05/31 02:45:25 main.go:143: [unhandled]:  initialized
+[loom]2024/05/31 02:46:04 main.go:143: [unhandled]:  shutdown

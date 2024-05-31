@@ -1,0 +1,15 @@
+// type SimpleRuntimeGuard >>= Fn(String) -> Void
+example = class
+    {
+	// the parameter x is a String but in the function it is
+	// okay to treat is as a Numbr even though the two types
+	// are incompatible
+    SimpleRuntimeGuard(x)
+        {
+        if Number?(x)
+            {
+            num = x + 123 // This is fine because the type system knows
+						  // that x is a number after the runtime check
+            }
+        }
+    }
