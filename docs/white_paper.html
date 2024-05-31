@@ -1,0 +1,441 @@
+<!DOCTYPE HTML>
+<html lang="en" class="light" dir="ltr">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>White Paper - TypeLoom</title>
+
+
+        <!-- Custom HTML head -->
+        
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff">
+
+        <link rel="icon" href="favicon.svg">
+        <link rel="shortcut icon" href="favicon.png">
+        <link rel="stylesheet" href="css/variables.css">
+        <link rel="stylesheet" href="css/general.css">
+        <link rel="stylesheet" href="css/chrome.css">
+        <link rel="stylesheet" href="css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="highlight.css">
+        <link rel="stylesheet" href="tomorrow-night.css">
+        <link rel="stylesheet" href="ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+
+    </head>
+    <body class="sidebar-visible no-js">
+    <div id="body-container">
+        <!-- Provide site root to javascript -->
+        <script>
+            var path_to_root = "";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('light')
+            html.classList.add(theme);
+            var body = document.querySelector('body');
+            body.classList.remove('no-js')
+            body.classList.add('js');
+        </script>
+
+        <input type="checkbox" id="sidebar-toggle-anchor" class="hidden">
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            var body = document.querySelector('body');
+            var sidebar = null;
+            var sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+            }
+            sidebar_toggle.checked = sidebar === 'visible';
+            body.classList.remove('sidebar-visible');
+            body.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded "><a href="white_paper.html" class="active"><strong aria-hidden="true">1.</strong> White Paper</a></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle">
+                <div class="sidebar-resize-indicator"></div>
+            </div>
+        </nav>
+
+        <!-- Track and set sidebar scroll position -->
+        <script>
+            var sidebarScrollbox = document.querySelector('#sidebar .sidebar-scrollbox');
+            sidebarScrollbox.addEventListener('click', function(e) {
+                if (e.target.tagName === 'A') {
+                    sessionStorage.setItem('sidebar-scroll', sidebarScrollbox.scrollTop);
+                }
+            }, { passive: true });
+            var sidebarScrollTop = sessionStorage.getItem('sidebar-scroll');
+            sessionStorage.removeItem('sidebar-scroll');
+            if (sidebarScrollTop) {
+                // preserve sidebar scroll position when navigating via links within sidebar
+                sidebarScrollbox.scrollTop = sidebarScrollTop;
+            } else {
+                // scroll sidebar to current active section when navigating via "next/previous chapter" buttons
+                var activeSection = document.querySelector('#sidebar .active');
+                if (activeSection) {
+                    activeSection.scrollIntoView({ block: 'center' });
+                }
+            }
+        </script>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <label id="sidebar-toggle" class="icon-button" for="sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </label>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">TypeLoom</h1>
+
+                    <div class="right-buttons">
+                        <a href="print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="weaving-gradual-types-into-legacy-codebases"><a class="header" href="#weaving-gradual-types-into-legacy-codebases">Weaving gradual types into legacy codebases</a></h1>
+<h2 id="introduction"><a class="header" href="#introduction">Introduction</a></h2>
+<p>In computer science, a type system serves as a structured framework comprised
+of a set of regulations aimed at attributing a characteristic known as a type to various
+components—be it variables, expressions, functions, or modules—that constitute a computer
+program. Its primary objective lies in mitigating the occurrence of errors within computer
+programs by establishing cohesive interfaces among disparate segments and subsequently verifying
+the consistency of their connections. Virtually all contemporary programming languages incorporate
+some form of a type system, with Assembly being a notable exception where the concept of
+type is absent. Typically, type systems are delineated within programming language specifications
+and integrated into interpreters and compilers, although there exist supplementary tools capable
+of extending a language's native type system through additional checks utilizing the language's
+inherent type syntax and structure. The principal aim of a programming language's type system
+is to curtail potential sources of errors in computer programs stemming from type discrepancies.
+Examples of such errors include concatenating a string with an integer, supplying an integer to
+a function expecting a string, or accessing an invalid memory location.</p>
+<p>Type systems can be broadly categorized into two distinct classes: static and dynamic. Also, referred
+to as statically typed or dynamically typed languages, these classes differ in their approach to type
+checking. In statically typed languages, type checking is performed at compile time, thereby ensuring
+that type errors are detected before the program is executed. Conversely, dynamically typed languages
+defer type checking until runtime, allowing for more flexibility in the program's structure and behavior.
+These two paradigms are not mutually exclusive, and many programming languages incorporate elements of
+both static and dynamic typing. In a dynamically typed language, the type information is associated with
+values rather than variables, and in a statically typed language, the type information is associated with
+variables rather than values.</p>
+<p>Fortran and Algol in the 1950s and 1960s marked the beginning of explicit type systems, where variables
+were associated with specific data types, thus reducing errors and improving program clarity.
+Statically-typed languages like C and Pascal emerged in the 1970s and 1980s, ensuring type safety through
+compile-time checks. This era also saw the rise of object-oriented programming with languages like, C++
+and Java, which integrated more sophisticated type systems to support complex data structures and inheritance.
+Later, Python and JavaScript became synonymous with dynamic typing. The dichotomy between static and dynamic
+typing continues to shape modern programming, offering developers a spectrum of tools to balance safety,
+performance, and ease of use based on their specific needs.</p>
+<h2 id="towards-statically-typed-languages"><a class="header" href="#towards-statically-typed-languages">Towards statically typed languages</a></h2>
+<p>In recent years, there has beed a trend across the ecosystem towards increasingly statically typed languages.
+JavaScript, a dynamically typed language is the de facto standard for web development and has seen wide spread
+adoption, so much so that the term Atwoods' Law was coined to describe the phenomenon. Atwoods' Law states that
+"any application that can be written in JavaScript, will eventually be written in JavaScript". But as developers
+and organizations have scaled their codebases, the lack of a strong type system has become a bottleneck. Microsoft
+in 2012 released a new language called TypeScript, which is a superset of JavaScript that adds optional static
+typing. TypeScript saw rapid adoption and has become the standard for large scale JavaScript development. In 2015,
+with version 3.15 Python, another popular dynamically typed language, introduced type hints, which allow developers
+to add type annotations to their code. There were clear signals for a desire and need for static typing as large
+dynamic codebases became harder to maintain and scale. As of the Stack Overflow Developer Survey 2024, the most
+loved langauge remains Rust, which is a statically typed systems programming language that guarantees memory safety
+and a rich type system. The trend towards static typing is clear. But we also saw the rise of a hybrid paradigm
+that aimed to combine the best of the both worlds. Gradual typing takes a pragmatic approach to type systems by
+allowing developers to add type informations for certain variables and expressions which is checked at compile time
+while allowing some parts of the codebase to remain untyped.</p>
+<h2 id="how-do-we-type-gradually"><a class="header" href="#how-do-we-type-gradually">How do we type gradually?</a></h2>
+<p>There are several approaches to gradual typing. The first approach is what we'll refer to as the transpiler approach.
+This is what TypeScript does. TypeScipt is a superset of JavaScript, which means that any valid JavaScript code is
+valid TypeScript code (not vice versa). Developes write code in TypeScript with type annotations and then run the
+TypeScript Compiler (or tsc) to transpile the TypeScript code to JavaScript and check for type errors. The produced
+JavaScript has no notion of types. But, we can rest assured that the produced JavaScript is type safe. This removal
+of types is called type erasure and occurs for statically typed languages as well when the code is compiled to machine
+code.</p>
+<p><img src="tsc.png" alt="TypeScript Compiler Architecture" />
+<em>Fig 1: Showing how the Type Script Compiler is architectured.</em></p>
+<p>The second approach we will dub as the syntactic sugar approach. This is what Python does. Python introduced type hints
+which are changes to the syntax of the language that allow developers to add type annotations to their code. Python chose
+to break backwards compatibility by introducing a new syntax for type hints where as TypeScript chose to be a superset of
+JavaScript and make no syntax changes to JavaScript itself. The Python interpreter interestingly enough does not check
+for type errors. Instead, the type hints are used by static analysis tools like mypy or pyre to check for type errors.</p>
+<p>There exists more approaches to gradual typing, but these two are the most common and for our case illustrates the major
+differences in how gradual typing can be implemented. So, to add types to an untyped code base either a) requires making a
+new language or b) requires new syntax to the language, or c) what typescript does again. Let me explain. There exists a way
+to add types to JavaScript and use the TypeScript Compiler to check for type errors. @ts-docs is a tool that allows developers
+to add type information in comments in their JavaScript codebase and feed this to the TypeScript Compiler to check for type
+errors. This is a very interesting approach as it allows developers to add types to their codebase without changing the
+syntax of the language or creating a super set (granted in this case the super set already exists whose type checking we are
+utilising for this approach). Comments in code are meant for developers and are ignored by the interpreter or compiler. Thus,
+comments carry no syntax of their own, and to add syntactically correct comments can be awkward and cumbersome. Afterall, no
+programmer wants to see the compiler shout at them for an incorrectly written comment.</p>
+<p><img src="./ts_type_eg.png" alt="" />
+<em>Fig 2: This figure shows a simple TypeScript code snippet with type annotations.</em></p>
+<p><img src="./ts-docs_type_eg.png" alt="" />
+<em>Fig 3: This figure shows a simple JavaScript code snippet with @ts-docs type annotations.</em></p>
+<p>For out proposed solution we will keep the aforementioned three approaches in mind and their respective trade-offs.</p>
+<ul>
+<li>The need for new syntax</li>
+<li>The need for unobtrusive type annotations</li>
+</ul>
+<h2 id="terminologies"><a class="header" href="#terminologies">Terminologies</a></h2>
+<ul>
+<li>
+<p>Decidability
+A type system is said to be decidable if there exists an algorithm that can determine, for any given program and
+within finite time, whether the program is well-typed according to the rules of the type system. In other words,
+the type checker will terminate.</p>
+</li>
+<li>
+<p>Soundness
+A type system is sound if any program that is deemed well-typed (i.e., it type-checks successfully) will not produce
+type errors when run. This ensures that the static type-checking phase (compile-time) guarantees the absence of
+certain kinds of runtime errors related to types.</p>
+</li>
+</ul>
+<p>An ideal type system must be both sound and decidable. Many modern type systems eventually become Turing complete and
+as a consequence undecidable. And many type systems are unsound, meaning that a program that type checks may still
+produce type errors at runtime.</p>
+<h2 id="how-is-typeloom-implemented"><a class="header" href="#how-is-typeloom-implemented">How is TypeLoom implemented?</a></h2>
+<p>Taking inspiration from modern Integrated Development Environments (IDEs) and the @ts-docs approach, we propose a new
+tool called TypeLoom. This tool utitlises the Language Server Protocol (LSP) which is a protocol used between an editor
+and a language server to provide diagnostics, completions, and other language features.</p>
+<p><img src="./editor_features.gif" alt="" />
+<em>Fig 4: Showing the features of an editor that uses the Language Server Protocol.</em></p>
+<p>TypeLoom leverages the inlay hints feature introduced in the LSP version 3.17.0. Inlay hints are a way to display additional
+information in the editor without changing the source code. Language servers like Rust's rust-analyzer use inlay hints to show
+type information, function signatures, and other useful information in the editor. TypeLoom will show the type information of
+variables and expressions in the editor using inlay hints. To obtain the type information, TypeLoom will utilise Code Actions,
+another feature of the LSP introduced in version 3.16.0. This sets TypeLoom's first limitation, it will only work with editors
+that support LSP version 3.17.0 and above. As of the time of writing, TypeLoom has only been tested with Neovim version 10.0.0.</p>
+<p><img src="./code_actions_eg.png" alt="" />
+<em>Fig 5: This figure shows a simple code snippet with a code actions menu.</em></p>
+<p>As for what language the proposed solution will work on is Suneido. Suneido is a dynamically typed language. I have worked with
+Suneido previously in a professional capacity and have contributed to it's open source compiler and runtime. So, I have a minimal
+understanding of the language and it's codebase as compared to other compilers and interpreters. The Suneido compiler is written
+using the Go language. The compiler we will hereby refer to as gSuneido. TypeLoom takes the source code when opened in an editor
+and sends it to gSuneido which then returns the s-expression form of the code.</p>
+<p><img src="./sexpr.png" alt="s-expr" />
+<em>Fig 6: This figure shows a simple code snippet in s-expression form.</em></p>
+<p>The s-expression format is simple, easy to parse and perfectly represented in a tree like structure. This makes it easy to
+traverse and extract the necessary information. The s-expression form returned from the gSuneido compiler is then sent to the loom-compiler.
+The loom-compiler is written in Rust, where representing a tree like structure is challenging due to the borrow checker and
+involves the <code>Rc&lt;RefCell&lt;T&gt;&gt;</code> pattern. The TypeLoom system was initially written in Python and again for a second time to support
+more features, but I decided to rewrite it in Rust, as I liked the expressiveness of the type system and the borrow checker. Representing
+a graph is also similary awkward with Rust's guarantess but an index based graph data structure was used to represent the graph.</p>
+<p>The loom-compiler instead of generating an Abstract Syntax Tree (AST) generates bytecode. The bytecode contains instructions on how
+to generate the graph data structure that will be used to check and infer types. The approach of using bytecode instead of AST
+was inspired by the sqlite database engine.
+<img src="./bytecode.png" alt="bytecode" />
+<em>Fig 7: This figure shows a simple code snippet in bytecode form.</em></p>
+<p>As is illustrated in the figure above, there are two bytecode instructions: CREATE and ADD_ARG. The CREATE instruction creates a new
+node and takes in one argument, the name of the node created. The ADD_ARG instruction adds the second node passed to it as an argument
+of the first node. For the simple expression <code>a = x + y</code>, the s-expression form would be <code>Eq(a, Add(x, y))</code>. The arguments to the Add
+node are the variables x and y, while the arguments to the Eq node are the variable a and the (result of) Add node. A graph in computer
+science is a data structure that is made of nodes and edges. A map of the london metro system is a graph. The nodes are the stations
+and the edges are the dfferent lines that connect the stations.</p>
+<p>A Virtual Machine which is an extension of the loom-compiler then executes the bytecode step by step to generate the graph data strucutre.
+A module called Ceph manages the graph data structure and is responsible for checking and inferring types.</p>
+<p>Ceph then performs type checking and basic inference on the graph data structure. Inference is the process of deducing the type of an
+expression. If we are given the expression <code>message = "Hey mom!"</code>, we can infer that the type of the variable message is a string, or
+when two numbers are being added we can be sure that the result is a number. Coming back to our graph, the nodes are connected to each
+other by edges. A connection between two nodes indicates that the two nodes are related in some way. In our graph, when two nodes are
+connected we say that that they have compatible types. <code>A &lt;---&gt; B</code> if nodes A and B are connected by an edge we put a type constraint
+on them saying their types must be compatible or equal to each other. And this applies even if two nodes are not directly connected.
+If <code>A &lt;---&gt; B</code> and <code>B &lt;---&gt; C</code> then <code>A &lt;---&gt; C</code>. A, B, and C are all nodes with compatible types in our graph. This fundamental property
+of our graph is leevied by the inference engine to deduce the types of the nodes. Going, back to our previous Add example. We can infer
+the type of a to be a Number, if we know that x and y are Numbers. How would we know the type of x and y? Here, we say that since x and y
+are arguments to the function Add, the programmer must tell us explicity the signature of each function. That is, the programmer must define
+the type of each argument to functions and what they return. Many other type systems put a similar restriction for function signatures
+for type inference to work. If, the programmer had provided the signature of Add as <code>type Add &gt;&gt;= Fn(Number, Number) -&gt; Number</code>, then we
+can infer the type of x and y to be Number. Ceph also checks for type errors. For each node, Ceph checks if the current node it is checking
+for has a type that is compatible with the type of the node it is connected to. If the types are not compatible, Ceph raises a type error.
+It also checks the signatures of the function provided by the programmer. Ceph when it comes across the node for Eq, would check that
+all the arguments to it are compatible. For the Add node, it would check if the two arguments are Numbers and if it returns a Number.
+And that is it, our type system is just two steps. The type system and the inference engine are illustrated by the following traits.</p>
+<p><img src="./infer_trait.png" alt="type inference traits" />
+<em>Fig 8: This figure shows the type inference trait in Rust.</em></p>
+<p><img src="./ts_traits.png" alt="type system traits" />
+<em>Fig 9: This figure shows the type system trait in Rust.</em></p>
+<h2 id="catching-basic-type-errors"><a class="header" href="#catching-basic-type-errors">Catching basic type errors</a></h2>
+<ol>
+<li>Basic Inference</li>
+</ol>
+<p>First, we demonstrate how TypeLoom can use local (graph-based) inference to infer the types of the variables in a simple program.
+<img src="./basic_inference.gif" alt="" /></p>
+<ol start="2">
+<li>Catching Potential Bugs</li>
+</ol>
+<p>In this example, the class has an attributen that isn't explicitly initialised, which could lead to potential bugs. TypeLoom catches this!
+<img src="./missing_attribute.gif" alt="" /></p>
+<ol start="3">
+<li>Catching Type Errors</li>
+</ol>
+<p>Here, TypeLoom catches the error, where a number is being called as a function, which would otherwise throw a runtime error.
+Also, note that it annotates the num variable as a Number which is inferred from the <code>+</code> operator.
+<img src="./simple_errors.gif" alt="" /></p>
+<p>It can also catch a variable re-assignment. Here the variable <code>x</code> is first assigned as a String and then later a Number. TypeLoom
+catches this error as well.
+<img src="./reassign_var.gif" alt="" /></p>
+<p>Here the programmer defined the argument to the function IncorrectParam as a Number as indicated by the inlay hints but then
+within the function body it is being assigned a String. TypeLoom catches this error as a type mismatch.
+<img src="./param_mismatch.gif" alt="" /></p>
+<h2 id="typeloom-type-system-features"><a class="header" href="#typeloom-type-system-features">TypeLoom type system features</a></h2>
+<p>Previously, we demonstrated how TypeLoom can catch basic type errors. Now, we will show some advanced features of the TypeLoom type system.</p>
+<ol>
+<li>Aliased Types
+Types can be given new names for convinience. The type String for example could be aliased to Message and then a variable could be
+of the type Message. This is a common feature in many type systems.</li>
+</ol>
+<p>For the sake of simplicity we have aliased the type Number2 to Number, as you can see assigning a Number to Number2 is valid but not
+a string as indicated by the error.</p>
+<p><img src="./alias_t.gif" alt="" /></p>
+<ol start="2">
+<li>Union Types
+A variable can have multiple types. This is useful when a variable can be of multiple types. For example, a variable could be a Number
+or a String. This is called a union type. A Union type is denoted by the <code>|</code> operator.</li>
+</ol>
+<p>Here we have a type Currency which is a union of GBP, USD and CAD. A variable of type Currency can be assigned any of the three types,
+and nothing else as demonstrated.
+~<a href="./union_literals.gif"></a></p>
+<ol start="3">
+<li>Structural Types
+A structural type can be thought of as a key-value pair. A variable of a structural type must have the same keys as the type. This is
+useful when a variable is expected to have a certain structure. For example, a variable could be expected to have a key <code>name</code> and a key
+<code>age</code>. This is called a structural type. A structural type is denoted by the <code>:</code> operator.</li>
+</ol>
+<p>Here we have two structural types User and Admin. GetUserAuth() only takes in the type Admin and not User. This is indicated by the error.</p>
+<p><img src="./structural_t.gif" alt="" /></p>
+<ol start="4">
+<li>Runtime Guards
+TypeLoom can understand runtime checks and guards to help it infer the type of variables.</li>
+</ol>
+<p>Here even though x is defined as a String, when we add a Number to it, TypeLoom can infer that x is a Number. This is because the
+previous if statement ensure that x will be of type Number. This is a powerful feature of the TypeLoom type system.</p>
+<p><img src="./runtime_guards.gif" alt="" /></p>
+<h2 id="drawbacks"><a class="header" href="#drawbacks">Drawbacks</a></h2>
+<p>Currently, TypeLoom is quite limited and hasn't been tested extensively and is still a demo or a toy project in my opinion.
+The type system so far appears sound but it is possible that there are bugs in the implementation. The type system is may
+at first appear turing incomplete, but with the inference from runtime check it is possible that it turns out to be
+turing complete and undecidable.</p>
+<p>The type system is also quite basic and lacks many features that are present in modern type systems. For example, TypeLoom
+does not support generics, higher kinded types, type classes, or dependent types. Not to say that advanced features are
+a must but the aim of TypeLoom is to be a practical tool for developers to catch type errors in their codebase.</p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="elasticlunr.min.js"></script>
+        <script src="mark.min.js"></script>
+        <script src="searcher.js"></script>
+
+        <script src="clipboard.min.js"></script>
+        <script src="highlight.js"></script>
+        <script src="book.js"></script>
+
+        <!-- Custom JS scripts -->
+
+
+    </div>
+    </body>
+</html>
