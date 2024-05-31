@@ -6,7 +6,7 @@ Weaving Pluggable LSP based Gradual and Optional typing into dynamic languages
 
 
 ## Demonstration
-[DEMO]()
+[DEMO](https://frroossst.github.io/TypeLoom/)
 
 
 
