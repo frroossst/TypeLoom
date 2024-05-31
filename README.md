@@ -2,11 +2,14 @@
 
 Weaving Pluggable LSP based Gradual and Optional typing into dynamic languages
 
-## Architecture
-
 
 ## Demonstration
-[DEMO](https://frroossst.github.io/TypeLoom/)
+[Paper with animated GIFs](https://frroossst.github.io/TypeLoom/)
+[Paper]()
+[Demo GIFs]()
+
+## Architecture
+![architecture](https://raw.githubusercontent.com/frroossst/TypeLoom/master/assets/TypeLoomArchitecture.png)
 
 
 
