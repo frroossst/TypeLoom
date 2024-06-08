@@ -7,8 +7,7 @@ pub struct Parser{
 impl Parser {
     pub fn new(src: &str) -> Self {
         Self {
-            src: src.to_string(),
-            pos: 0,
+            src: src.to_string(), pos: 0,
         }
     }
 

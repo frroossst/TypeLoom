@@ -1,8 +1,7 @@
 # Summary
 
 - [Acknowledgements](./acknowledgements.md)
-- [White Paper](./white_paper.md)
-- [Paper](./paper.md)
+- [Paper](./paper_redir.md)
 - [Demo GIFs](./demo_gifs.md)
 - [References](./references.md)
 
